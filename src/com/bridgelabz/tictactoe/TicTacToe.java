@@ -1,10 +1,14 @@
 package com.bridgelabz.tictactoe;
 
+import java.util.Scanner;
+
 public class TicTacToe {
 	static int board[][] = new int[3][3];
+	static final Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 		createBoard();
 		System.out.println("Tic Tac Toe Board is created!!");
+		chooseLetter();
 	}
 	
 	public static void createBoard() {
@@ -12,6 +16,21 @@ public class TicTacToe {
 			for(int j = 0; j < board.length; j++) {
 				board[i][j] = ' ';
 			}
+		}
+	}
+	
+	public static void chooseLetter() {
+		System.out.print("Choose letter X or O:");
+		char letter = sc.next().charAt(0);
+		switch(letter) {
+			case 'X' :
+				System.out.println("It has choosen X to play the game");
+				break;
+			case 'O' :
+				System.out.println("It has choosen O to play the game");
+				break;
+			default :
+				System.out.println("You have enterd Invalid letter");
 		}
 	}
 
