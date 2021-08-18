@@ -13,6 +13,8 @@ public class TicTacToe {
 		System.out.println("Tic Tac Toe Board is created!!");
 		chooseLetter();
 		playerChoice(letter);
+		checkWinner();
+		checkComputerWin();
 	}
 
 	public static void createBoard() {
@@ -98,17 +100,20 @@ public class TicTacToe {
 		}
 	}
 
-	public static void toss() {
+	public static String toss() {
 		Random random = new Random();
+		String user = null;
 		int randomCheck = random.nextInt(2);
 		if (randomCheck == 1) {
 			System.out.println("Player won the toss");
 		} else {
 			System.out.println("Computer won the toss");
+		user = "CPU";
 		}
+		return user;
 	}
 	
-	public static boolean checkingForWinner() {
+	public static boolean checkWinner() {
 		return (checkForRow() || checkForColumn() || checkForDiagonal());
 	}
 	
@@ -144,6 +149,14 @@ public class TicTacToe {
 		
 	}
 	
+	public static boolean checkComputerWin() {
+		String name = toss();
+		if(name.equals("CPU")) {
+			checkWinner();
+			playerChoice(letter);
+		}
+		return false;
+	}
 	public static void checkFreeSpace() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
