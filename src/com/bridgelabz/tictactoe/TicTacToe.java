@@ -9,7 +9,6 @@ public class TicTacToe {
 	static char letter;
 
 	public static void main(String[] args) {
-
 		createBoard();
 		System.out.println("Tic Tac Toe Board is created!!");
 		chooseLetter();
@@ -108,7 +107,43 @@ public class TicTacToe {
 			System.out.println("Computer won the toss");
 		}
 	}
-
+	
+	public static boolean checkingForWinner() {
+		return (checkForRow() || checkForColumn() || checkForDiagonal());
+	}
+	
+	public static boolean checkForRow() {
+		for (int i = 0; i < board.length; i++) {
+			if (check(board[i][0], board[i][1], board[i][2]) == true) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean checkForColumn() {
+		for (int i = 0; i < board.length; i++) {
+			if (check(board[0][i], board[1][i], board[2][i]) == true) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean checkForDiagonal() {
+		for (int i = 0; i < board.length; i++) {
+			if (check(board[0][0], board[1][1], board[2][2]) == true || check(board[0][2], board[1][1], board[2][0]) == true)  {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean check(int c1, int c2, int c3) {
+		return ((c1 == c2) && (c2 == c3));
+		
+	}
+	
 	public static void checkFreeSpace() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
